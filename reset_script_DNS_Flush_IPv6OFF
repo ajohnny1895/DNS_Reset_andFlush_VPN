@@ -1,0 +1,56 @@
+@ECHO off
+ECHO %NL%====================================================
+ECHO              WINDOWS FLUSH AND DNS VERSION 1.0
+ECHO                        ajohnny1895
+ECHO                            -
+ECHO                    NOT A TCP/IP RESET
+ECHO                            -
+ECHO                        IPV6 off
+ECHO                            -
+ECHO                 DHCP AUTO FOR VPN ISSUES
+ECHO                            -
+ECHO                        DNS FLUSH
+ECHO                            -
+ECHO           ..............STARTING...............
+ECHO ===================================================%NL%
+ECHO %NL%====================================================
+ECHO         -----------------------------------
+ECHO         ------RESETTING DHCP TO AUTO-------
+ECHO         -----------------------------------
+ECHO ====================================================%NL%
+@ECHO on
+netsh interface ip set dns name="Wi-Fi" source=dhcp
+netsh interface set interface "VMware Network Adapter VMnet1" admin=ENABLED
+netsh interface ip set dns name="VMware Network Adapter VMnet1" source=dhcp
+netsh interface set interface "VMware Network Adapter VMnet1" admin=DISABLED
+netsh interface set interface "VMware Network Adapter VMnet8" admin=ENABLED
+netsh interface ip set dns name="VMware Network Adapter VMnet8" source=dhcp
+netsh interface set interface "VMware Network Adapter VMnet8" admin=DISABLED
+netsh interface set interface "Ethernet 3" admin=ENABLED
+netsh interface ip set dns name="Ethernet 3" source=dhcp
+netsh interface set interface "Ethernet 3" admin=DISABLED
+@ECHO off
+ECHO %NL%====================================================
+ECHO    ----------------------------------------------
+ECHO    -----FLUSHING THE DNS CACHE FOR RESOLVES------
+ECHO    ----------------------------------------------
+ECHO ====================================================%NL%
+@ECHO on
+ipconfig/flushdns
+ipconfig/flushdns
+ipconfig/flushdns
+@ECHO off
+ECHO %NL%====================================================
+ECHO          -------------------------------
+ECHO          ------------WORKING------------
+ECHO          -------------------------------
+ECHO ====================================================%NL%
+ECHO %NL%====================================================
+ECHO          -------------------------------
+ECHO          --------TASKS COMPLETED--------
+ECHO          -------------------------------
+ECHO          -------------------------------    
+ECHO          TASK SCHEDULED AT STARTUP/LOGON
+ECHO ====================================================%NL%
+@ECHO on
+cmd /k
