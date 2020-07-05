@@ -50,7 +50,8 @@ ECHO          -------------------------------
 ECHO          -------------------------------    
 ECHO       THIS TASK IS SCHEDULED AT STARTUP/LOGON
 ECHO ====================================================%NL%
-@ECHO on
+ECHO ====================================================%NL%
+ECHO ====================================================%NL%
+ECHO you can now type exit or use your mouse to exit this window
 cmd /k
 @ECHO off
-ECHO you can now type exit or exit out of this window
