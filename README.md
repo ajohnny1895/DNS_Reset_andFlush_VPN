@@ -17,3 +17,6 @@ Have the task scheduler perform this script on startup.
 # 1.1.0 Version Aug 08 2020
 Added a command to "forget" or delete known networks
 (you will ned to write a loop to recursively delete all known networks if you do not want to delete a single/individual network)
+
+For removal of all known networks:
+netsh wlan delete profile name=* i=*.
