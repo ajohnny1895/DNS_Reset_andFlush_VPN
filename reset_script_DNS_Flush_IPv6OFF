@@ -1,6 +1,6 @@
 @ECHO off
 ECHO %NL%====================================================
-ECHO            WINDOWS DNS RESET AND FLUSH VERSION 1.0
+ECHO            WINDOWS DNS RESET AND FLUSH VERSION 1.1.0
 ECHO                        ajohnny1895
 ECHO                            -
 ECHO                    NOT A TCP/IP RESET
@@ -11,7 +11,7 @@ ECHO                 DHCP AUTO FOR VPN ISSUES
 ECHO                            -
 ECHO                        DNS FLUSH
 ECHO                            -
-ECHO           ..............STARTING...............
+ECHO          Deletes or forgets known wifi networks
 ECHO ===================================================%NL%
 ECHO %NL%====================================================
 ECHO         -----------------------------------
@@ -43,6 +43,26 @@ ECHO          -------------------------------
 ECHO         -----------DNS flushed-----------
 ECHO          -------------------------------
 ECHO ====================================================%NL%
+ECHO %NL%----------------------------------------------------%NL%
+ECHO             ipconfig/release and renew
+ECHO ----------------------------------------------------%NL%
+@ECHO on
+ipconfig/release
+ipconfig/renew
+@ECHO off
+ECHO %NL%***************************************************
+ECHO          -------------------------------
+ECHO		       DELETING WiFi interface Wi-Fi
+ECHO           Resets ipsec resolves without
+ECHO              cmd netsh int ip reset 
+ECHO               Interface: 
+ECHO          -------------------------------
+ECHO ***************************************************%NL%
+@ECHO on
+netsh wlan show profiles
+netsh wlan delete profile name="replace with wifi name"
+netsh wlan delete profile name=* i=*
+@ECHO off
 ECHO %NL%====================================================
 ECHO          -------------------------------
 ECHO          --------TASKS COMPLETED--------
