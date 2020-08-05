@@ -16,7 +16,7 @@ ECHO ===================================================%NL%
 ECHO %NL%====================================================
 ECHO         -----------------------------------
 ECHO         ------RESETTING DHCP TO AUTO-------
-ECHO         -----------------------------------
+ECHO        ------Enable or Disable network-------
 ECHO ====================================================%NL%
 @ECHO on
 netsh interface ip set dns name="[replace this with the adapter name like wifi]" source=dhcp
@@ -55,13 +55,17 @@ ECHO          -------------------------------
 ECHO		       DELETING WiFi interface Wi-Fi
 ECHO           Resets ipsec resolves without
 ECHO              cmd netsh int ip reset 
-ECHO               Interface: 
+ECHO         resets network's DNS to DHCP (auto)
+ECHO       Turns wi-fi or other interfaces back on
+ECHO               Interface: [insert name]
 ECHO          -------------------------------
 ECHO ***************************************************%NL%
 @ECHO on
 netsh wlan show profiles
 netsh wlan delete profile name="replace with wifi name"
+netsh interface ip set dns name="[replace this with the adapter name like wifi]" source=dhcp
 netsh wlan delete profile name=* i=*
+netsh interface set interface "[additional adapter]" admin=ENABLED
 @ECHO off
 ECHO %NL%====================================================
 ECHO          -------------------------------
@@ -73,5 +77,6 @@ ECHO ====================================================%NL%
 ECHO ====================================================%NL%
 ECHO ====================================================%NL%
 ECHO you can now type exit or use your mouse to exit this window
+ECHO you may not attempt to connect to a network
 cmd /k
 @ECHO off
